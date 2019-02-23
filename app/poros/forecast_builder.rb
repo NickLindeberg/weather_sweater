@@ -14,7 +14,9 @@ class ForecastBuilder
   end
 
   def daily
-    @forecast[:daily]
+    @forecast[:daily][:data].map do |days|
+      DailyWeather.new(days)
+    end
   end
 
   def hourly

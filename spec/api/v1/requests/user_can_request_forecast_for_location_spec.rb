@@ -14,8 +14,9 @@ describe 'visitor or user can see a forecast' do
       expect(data[:id]).to eq("denver,co")
       expect(data[:type]).to eq("forecast")
 
-      currently = attributes[:currently]
       expect(attributes).to have_key(:currently)
+      currently = attributes[:currently]
+      expect(currently.count).to eq(7)
       expect(currently).to have_key(:time)
       expect(currently).to have_key(:summary)
       expect(currently).to have_key(:precipitation)
@@ -25,8 +26,17 @@ describe 'visitor or user can see a forecast' do
       expect(currently).to have_key(:visibility)
 
       expect(attributes).to have_key(:daily)
-      expect(attributes).to have_key(:hourly)
+      daily = attributes[:daily]
+      expect(daily.count).to eq(8)
+      expect(daily[0]).to have_key(:time)
+      expect(daily[0]).to have_key(:summary)
+      expect(daily[0]).to have_key(:icon)
+      expect(daily[0]).to have_key(:precipitation)
+      expect(daily[0]).to have_key(:high)
+      expect(daily[0]).to have_key(:low)
+      expect(daily[0]).to have_key(:visibility)
 
+      expect(attributes).to have_key(:hourly)
     end
   end
 end
