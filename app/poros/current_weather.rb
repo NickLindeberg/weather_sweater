@@ -1,4 +1,11 @@
 class CurrentWeather
+  attr_reader :time,
+              :summary,
+              :precipitation,
+              :temperature,
+              :humidity,
+              :uv_index,
+              :visibility  
 
   def initialize(weather_data)
     @time = Time.at(weather_data[:time]).ctime
@@ -9,5 +16,5 @@ class CurrentWeather
     @uv_index = weather_data[:uvIndex]
     @visibility = weather_data[:visibility]
   end
-  
+
 end
