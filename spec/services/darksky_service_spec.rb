@@ -4,7 +4,7 @@ describe 'Darksky service' do
   before(:each) do
     @dservice = DarkskyService.new
   end
-  
+
   it 'exists' do
     VCR.use_cassette("darksky_service_spec") do
 
@@ -24,11 +24,11 @@ describe 'Darksky service' do
 
       expect(response).to have_key(:hourly)
       expect(response[:hourly][:data].count).to eq(49)
-      expect(response[:hourly][:data].first[:summary]).to eq("Snow")
+      expect(response[:hourly][:data].first[:summary]).to eq("Light Rain")
 
       expect(response).to have_key(:daily)
       expect(response[:daily][:data].count).to eq(8)
-      expect(response[:daily][:summary]).to eq("Snow (1–2 in.) today and Friday, with high temperatures rising to 59°F on Thursday.")
+      expect(response[:daily][:summary]).to eq("Snow (2–4 in.) today and next Saturday, with high temperatures peaking at 58°F on Thursday.")
     end
   end
 end
