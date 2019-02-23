@@ -4,6 +4,7 @@ describe 'Darksky service' do
   before(:each) do
     @dservice = DarkskyService.new
   end
+  
   it 'exists' do
     VCR.use_cassette("darksky_service_spec") do
 
