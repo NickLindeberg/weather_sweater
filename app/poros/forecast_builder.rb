@@ -10,7 +10,7 @@ class ForecastBuilder
   end
 
   def currently
-    @forecast[:currently]
+    CurrentWeather.new(@forecast[:currently])
   end
 
   def daily
