@@ -12,7 +12,6 @@ describe 'visitor or user can see a forecast' do
       expect(data).to have_key(:type)
       expect(data[:id]).to eq("denver,co")
       expect(data[:type]).to eq("forecast")
-      require "pry"; binding.pry
     end
   end
 end
