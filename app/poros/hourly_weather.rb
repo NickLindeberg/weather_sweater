@@ -1,4 +1,7 @@
 class HourlyWeather
+  attr_reader :time,
+              :icon,
+              :temp
 
   def initialize(weather_data)
     @time = Time.at(weather_data[:time]).ctime
