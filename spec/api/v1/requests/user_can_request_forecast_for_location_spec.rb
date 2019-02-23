@@ -37,6 +37,11 @@ describe 'visitor or user can see a forecast' do
       expect(daily[0]).to have_key(:visibility)
 
       expect(attributes).to have_key(:hourly)
+      hourly = attributes[:hourly]
+      expect(hourly.count).to eq(49)
+      expect(hourly[0]).to have_key(:time)
+      expect(hourly[0]).to have_key(:temp)
+      expect(hourly[0]).to have_key(:icon)
     end
   end
 end

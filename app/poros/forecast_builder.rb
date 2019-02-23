@@ -20,6 +20,8 @@ class ForecastBuilder
   end
 
   def hourly
-    @forecast[:hourly]
+    @forecast[:hourly][:data].map do |hours|
+      HourlyWeather.new(hours)
+    end
   end
 end
