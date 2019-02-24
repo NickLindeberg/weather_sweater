@@ -1,5 +1,6 @@
 class BackgroundBuilder
-  attr_reader :location
+  attr_reader :location, :flickr_response, :url
+
 
   def initialize(location)
     @location = location
