@@ -17,6 +17,7 @@ VCR.configure do |config|
   config.filter_sensitive_data("<GOOGLE_API_KEY>") { ENV['GOOGLE_API_KEY'] }
   config.filter_sensitive_data("<DARKSKY_API_KEY>") { ENV['DARKSKY_API_KEY'] }
   config.filter_sensitive_data("<GIPHY_API_KEY>") { ENV['GIPHY_API_KEY'] }
+  config.filter_sensitive_data("<FLICKR_API_KEY>") { ENV['FLICKR_API_KEY'] }
 end
 
 Shoulda::Matchers.configure do |config|
