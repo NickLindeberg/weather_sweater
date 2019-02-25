@@ -3,7 +3,7 @@ require 'rails_helper'
 
 describe 'Gif request' do
   it 'shows json response with gify urls' do
-    VCR.use_cassette("gifs_request_spec") do 
+    VCR.use_cassette("gifs_request_spec") do
       stub_request(:get, "https://maps.googleapis.com/maps/api/geocode/json?address=denver,co&key=#{ENV["GOOGLE_API_KEY"]}")
                   .to_return(body: File.read("./spec/fixtures/geocode_response.json"))
 
@@ -12,11 +12,17 @@ describe 'Gif request' do
 
       get '/api/v1/gifs?location=denver,co'
 
-      data = JSON.parse(response.body, symbolize_names: true)[:data]
-
       expect(response).to be_successful
-
-require "pry"; binding.pry
+      data = JSON.parse(response.body, symbolize_names: true)[:data]
+      expect(data).to have_key(:id)
+      expect(data).to have_key(:type)
+      expect(data).to have_key(:attributes)
+      atts = data[:attributes]
+      expect(atts).to have_key(:images)
+      expect(atts[:images].count).to eq(8)
+      expect(atts[:images][0]).to have_key(:time)
+      expect(atts[:images][0]).to have_key(:summary)
+      expect(atts[:images][0]).to have_key(:url)
     end
   end
 end
