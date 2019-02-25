@@ -20,4 +20,3 @@ describe 'user account creation' do
     expect(response.status).to eq(201)
   end
 end
-«»
