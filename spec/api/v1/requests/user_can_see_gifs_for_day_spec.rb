@@ -7,7 +7,6 @@ describe 'Gif request' do
 
     data = JSON.parse(response.body, symbolize_names: true)[:data]
 
-require "pry"; binding.pry
     expect(response).to be_successful
 
   end
