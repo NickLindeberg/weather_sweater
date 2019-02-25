@@ -5,7 +5,7 @@ class Api::V1::FavoritesController < ApplicationController
     if user
       favorite = Favorite.find_or_create_by(location: (params[:location]))
       success = user.user_favorites.create(favorite_id: favorite.id)
-      render json: "Good Job", status: 204
+      render json: "Favorite Created", status: 204
     else
       render json: "Error", status: 401
     end
