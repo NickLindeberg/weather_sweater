@@ -14,5 +14,4 @@ class GifBuilder
       Gifs.new(days)
     end
   end
-
 end
