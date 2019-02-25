@@ -1,14 +1,17 @@
 class GiphyService
 
-  def get_gifs(location)
-    hash = jsonify("?api_key=#{ENV['GIPHY_API_KEY']}&q=#{location}")
+  def get_gif(location)
+    hash = jsonify("search?api_key=#{ENV['GIPHY_API_KEY']}&q=#{location}")
+    hash[:data].sample
   end
 
   def connect
-    Faraday.new(url: "https://api.giphy.com/search")
+    Faraday.new(url: "https://api.giphy.com/v1/gifs/") do |faraday|
+      faraday.adapter Faraday.default_adapter
+    end
   end
 
-  def jsonify(term)
+  def jsonify(url)
     JSON.parse(connect.get(url).body, symbolize_names: true)
   end
 
