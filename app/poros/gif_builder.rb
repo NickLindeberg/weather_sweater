@@ -1,5 +1,6 @@
 class GifBuilder
-  attr_reader :location
+  attr_reader :location,
+              :copyright
 
   def initialize(location)
     @location = location
@@ -13,5 +14,9 @@ class GifBuilder
     @forecast[:daily][:data].map do |days|
       Gifs.new(days)
     end
+  end
+
+  def copyright
+    Time.now.year.to_s
   end
 end

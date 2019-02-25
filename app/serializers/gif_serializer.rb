@@ -1,5 +1,5 @@
 class GifSerializer
   include FastJsonapi::ObjectSerializer
   set_id :location
-  attributes :images
+  attributes :images, :copyright
 end

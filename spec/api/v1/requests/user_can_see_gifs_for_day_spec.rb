@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe 'Gif request' do
   it 'shows json response with gify urls' do
     VCR.use_cassette("gifs_request_spec") do
@@ -14,15 +13,23 @@ describe 'Gif request' do
 
       expect(response).to be_successful
       data = JSON.parse(response.body, symbolize_names: true)[:data]
+
       expect(data).to have_key(:id)
       expect(data).to have_key(:type)
       expect(data).to have_key(:attributes)
+
       atts = data[:attributes]
       expect(atts).to have_key(:images)
+      expect(atts).to have_key(:copyright)
+      expect(atts[:copyright]).to eq("2019")
       expect(atts[:images].count).to eq(8)
       expect(atts[:images][0]).to have_key(:time)
       expect(atts[:images][0]).to have_key(:summary)
       expect(atts[:images][0]).to have_key(:url)
+
+      expect(atts[:images][0][:time]).to eq(1551078000)
+      expect(atts[:images][0][:summary]).to eq("Mostly cloudy until evening")
+      expect(atts[:images][0][:url]).to eq("https://giphy.com/embed/63xBFHKNVjZlu")
     end
   end
 end
