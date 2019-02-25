@@ -1,4 +1,5 @@
 class GifBuilder
+  attr_reader :location
 
   def initialize(location)
     @location = location
@@ -6,11 +7,12 @@ class GifBuilder
     darksky = DarkskyService.new
     coords = google.get_coords(location)
     @forecast = darksky.get_forecast(coords[:lat], coords[:lng])
-    require "pry"; binding.pry
   end
 
   def images
-
+    @forecast[:daily][:data].map do |days|
+      Gifs.new(days)
+    end
   end
 
 end

@@ -1,7 +1,7 @@
 class GiphyService
 
-  def get_gif(location)
-    hash = jsonify("search?api_key=#{ENV['GIPHY_API_KEY']}&q=#{location}")
+  def get_gif(term)
+    hash = jsonify("search?api_key=#{ENV['GIPHY_API_KEY']}&q=#{term}")
     hash[:data].sample
   end
 
