@@ -61,6 +61,7 @@ describe 'request' do
     expect(attributes.count).to eq(2)
     expect(attributes.first).to have_key(:location)
     expect(attributes.first[:location]).to eq("denver,co")
+    expect(attributes.last[:location]).to eq("chicago,il")
 
     expect(attributes.first).to have_key(:current_weather)
     expect(attributes.first[:current_weather]).to have_key(:time)
