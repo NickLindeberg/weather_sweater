@@ -3,10 +3,8 @@ class ForecastBuilder
 
   def initialize(location)
     @location = location
-    google = GoogleCoordsService.new
-    darksky = DarkskyService.new
-    coords = google.get_coords(location)
-    @forecast = darksky.get_forecast(coords[:lat], coords[:lng])
+    coords = CoordinateAdapter.new.pinpoint(location)
+    @forecast = WeatherAdapter.new.forecast(coords)
   end
 
   def currently

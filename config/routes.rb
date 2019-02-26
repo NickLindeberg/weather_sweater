@@ -6,6 +6,10 @@ Rails.application.routes.draw do
       get "/backgrounds", to: 'background#show'
       post '/users', to: 'users#create'
       get '/gifs', to: 'gifs#index'
+      post '/sessions', to: 'sessions#create'
+      post '/favorites', to: 'favorites#create'
+      get '/favorites', to: 'favorites#index'
+      delete '/favorites', to: 'favorites#destroy'
     end
   end
 end
