@@ -32,6 +32,7 @@ gem 'faraday'
 gem 'figaro'
 gem 'bcrypt'
 require 'securerandom'
+gem 'fast_jsonapi'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -40,7 +41,6 @@ group :development, :test do
   gem 'pry'
   gem 'simplecov'
   gem 'shoulda-matchers'
-  gem 'fast_jsonapi'
   gem 'vcr'
   gem 'webmock'
 end
