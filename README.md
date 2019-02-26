@@ -61,7 +61,9 @@ git@github.com:NickLindeberg/weather_sweater.git
 
 #### Login To Account
 `POST /api/v1/sessions`
+
 `Content-Type: application/json`
+
 `Accept: application/json`
 
 {
