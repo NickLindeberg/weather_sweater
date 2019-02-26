@@ -40,18 +40,18 @@ git@github.com:NickLindeberg/weather_sweater.git
 ### Example Requests
 
 #### Get Weather For A City
-`GET /api/v1/forecast?location=denver,co
+`GET /api/v1/forecast?location=denver,co`
 
-Content-Type: application/json
+`Content-Type: application/json`
 
-Accept: application/json`
+`Accept: application/json`
 
 #### Create An Account
-`POST /api/v1/users
+`POST /api/v1/users`
 
-Content-Type: application/json
+`Content-Type: application/json`
 
-Accept: application/json`
+`Accept: application/json`
 
 {
   "email": "whatever@example.com",
@@ -85,7 +85,9 @@ body:
 
 #### List Your Favorite Locations
 `GET /api/v1/favorites`
+
 `Content-Type: application/json`
+
 `Accept: application/json`
 
 body:
@@ -96,7 +98,9 @@ body:
 
 #### Remove A Favorite Location
 `DELETE /api/v1/favorites`
+
 `Content-Type: application/json`
+
 `Accept: application/json`
 
 body:
