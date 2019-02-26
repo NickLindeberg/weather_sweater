@@ -11,7 +11,7 @@ class DarkskyService
       faraday.adapter Faraday.default_adapter
     end
   end
-  
+
   def jsonify(path)
     JSON.parse(connect.get(path).body, symbolize_names: true)
   end
