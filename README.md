@@ -45,9 +45,9 @@ Content-Type: application/json
 Accept: application/json
 
 #### Create An Account
-POST /api/v1/users
+`POST /api/v1/users
 Content-Type: application/json
-Accept: application/json
+Accept: application/json`
 
 {
   "email": "whatever@example.com",
