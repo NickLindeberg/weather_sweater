@@ -35,7 +35,7 @@ describe 'request' do
     post "/api/v1/favorites", :params => {"location"=>"Denver, CO",
       "api_key": "wrong",
        "controller"=>"api/v1/favorites",
-       "action"=>"create"}, :headers => headers
+       "action"=>"create"}, :headers => @headers
 
     expect(request.params).to have_key("location")
     expect(request.params).to have_key("api_key")
@@ -50,7 +50,7 @@ describe 'request' do
 
     get "/api/v1/favorites", :params => {"api_key": "12344",
       "controller"=>"api/v1/favorites",
-      "action"=>"index"}, :headers => headers
+      "action"=>"index"}, :headers => @headers
     data = JSON.parse(response.body, symbolize_names: true)[:data]
 
     expect(data).to have_key(:id)
@@ -73,14 +73,43 @@ describe 'request' do
     expect(attributes.first[:current_weather]).to have_key(:visibility)
   end
 
-  it 'shows a list of user favorites' do
+  it 'access denied when trying to look at user favorites' do
     favorite_1 = @user.favorites.create(location: "denver,co")
     favorite_2 = @user.favorites.create(location: "chicago,il")
 
     get "/api/v1/favorites", :params => {"api_key": "",
       "controller"=>"api/v1/favorites",
-      "action"=>"index"}, :headers => headers
+      "action"=>"index"}, :headers => @headers
 
     expect(response.status).to eq(401)
+  end
+
+  it 'lets user delete a favorite' do
+    favorite_1 = @user.favorites.create(location: "denver,co")
+    favorite_2 = @user.favorites.create(location: "chicago,il")
+
+    expect(@user.favorites.count).to eq(2)
+
+    delete "/api/v1/favorites", :params => {"location"=>"denver,co",
+      "api_key": "12344",
+      "controller"=>"api/v1/favorites",
+      "action"=>"destroy"}, :headers => @headers
+
+    expect(response.status).to eq(204)
+    expect(@user.favorites.count).to eq(1)
+  end
+  it 'lets does not let user destroy if api key is wrong' do
+    favorite_1 = @user.favorites.create(location: "denver,co")
+    favorite_2 = @user.favorites.create(location: "chicago,il")
+
+    expect(@user.favorites.count).to eq(2)
+
+    delete "/api/v1/favorites", :params => {"location"=>"denver,co",
+      "api_key": "",
+      "controller"=>"api/v1/favorites",
+      "action"=>"destroy"}, :headers => @headers
+
+    expect(response.status).to eq(404)
+    expect(@user.favorites.count).to eq(2)
   end
 end
