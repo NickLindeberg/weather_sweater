@@ -1,6 +1,8 @@
 # Weather Sweater
 ### Weather Sweater is the backend to an app I will be building in the near future called Sweater Weather.
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/5d473378fd21c2c8d75a/maintainability)](https://codeclimate.com/github/NickLindeberg/weather_sweater/maintainability)
+
 ## APIs 
 
 - Flickr
