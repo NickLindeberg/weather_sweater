@@ -41,7 +41,9 @@ git@github.com:NickLindeberg/weather_sweater.git
 
 #### Get Weather For A City
 `GET /api/v1/forecast?location=denver,co`
+
 `Content-Type: application/json`
+
 `Accept: application/json`
 
 #### Create An Account
@@ -67,7 +69,9 @@ git@github.com:NickLindeberg/weather_sweater.git
 
 #### Add A Favorite Location
 `POST /api/v1/favorites`
+
 `Content-Type: application/json`
+
 `Accept: application/json`
 
 body:
