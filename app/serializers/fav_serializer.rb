@@ -1,5 +1,5 @@
 class FavSerializer
   include FastJsonapi::ObjectSerializer
-  set_id :location
-  attributes :url
+  set_id :user_id
+  attributes :body
 end

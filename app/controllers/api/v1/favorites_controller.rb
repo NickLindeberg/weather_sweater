@@ -1,5 +1,15 @@
 class Api::V1::FavoritesController < ApplicationController
 
+  def index
+    user = User.find_by(api_key: params[:api_key])
+    if user
+      render json: FavSerializer.new(FavBuilder.new(user)), status: 200
+    else
+      render json: "Unauthorized", status: 401
+    end
+  end
+
+
   def create
     user = User.find_by(api_key: params[:api_key])
     if user
