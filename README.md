@@ -22,7 +22,7 @@ This project uses the following:
 
  - Clone the repo:
  
-git@github.com:NickLindeberg/weather_sweater.git 
+` git@github.com:NickLindeberg/weather_sweater.git` 
 
  - Run:
  
