@@ -14,7 +14,7 @@ class Api::V1::FavoritesController < ApplicationController
     if user
       favorite = Favorite.find_or_create_by(location: (params[:location]))
       success = user.user_favorites.create(favorite_id: favorite.id)
-      render json: "Favorite Created", status: 204
+      render json: "Favorite Created", status: 200
     else
       render json: "Error", status: 401
     end
@@ -24,10 +24,10 @@ class Api::V1::FavoritesController < ApplicationController
     user = User.find_by(api_key: params[:api_key])
     if user
       fav = user.favorites.find_by(location: params[:location])
+      render json: FavSerializer.new(FavBuilder.new(user)), status: 200
       fav.destroy
-      render json: "Deleted", status: 204
     else
-      render json: "Error", status: 404
+      render json: "Error", status: 401
     end
   end
 end
