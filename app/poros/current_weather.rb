@@ -5,7 +5,7 @@ class CurrentWeather
               :temperature,
               :humidity,
               :uv_index,
-              :visibility  
+              :visibility
 
   def initialize(weather_data)
     @time = Time.at(weather_data[:time]).ctime
